@@ -1,0 +1,66 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+body{
+    background-color: #1b1b1b;
+    font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+}
+ul{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0;
+}
+:root {
+    --purple: #8c00ff;
+    --purple-light: #9e29ffd5;
+    --secondary-color: #6c757d;
+    --text-color: #212529;
+    --background-color: #f8f9fa;
+  }
+  
+  [data-appearance='Dark'] {
+    --secondary-color: #6c757d;
+    --text-color: #f8f9fa;
+    --background-color: #292929;
+  }
+  
+  body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .btn-primary {
+    background-color: var(--purple);
+    color: var(--text-color);
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+  }
+
+  .button-rounded-animated {
+    background-color: var(--purple-light);
+    border-radius: 100px;
+    box-shadow: rgba(123, 44, 187, 0.2) 0 -25px 18px -10px inset,rgba(123, 44, 187, .15) 0 1px 2px,rgba(123, 44, 187, .15) 0 2px 4px,rgba(123, 44, 187, .15) 0 4px 8px,rgba(123, 44, 187, .15) 0 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    a{
+      color: #f8f9fa;
+    }
+    &:hover {
+      box-shadow: rgba(123, 44, 187,.35) 0 -25px 18px -14px inset,rgba(123, 44, 187,.25) 0 1px 2px,rgba(123, 44, 187,.25) 0 2px 4px,rgba(123, 44, 187,.25) 0 4px 8px,rgba(123, 44, 187,.25) 0 8px 16px,rgba(123, 44, 187,.25) 0 16px 32px;
+      transform: scale(1.05) rotate(-1deg);
+    }
+  }

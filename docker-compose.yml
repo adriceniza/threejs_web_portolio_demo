@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  react:
+    build: .
+    container_name: react_app
+    restart: unless-stopped
+    expose:
+      - "3000"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.react_app.rule=Host(`localhost`)
+      - traefik.http.routers.react_app.entrypoints=websecure
+      - traefik.http.routers.react_app.tls.certresolver=letsencrypt
+      - traefik.http.services.react_app.loadbalancer.server.port=3000
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    environment:
+        - NODE_ENV=development
+    networks:
+        - traefik_network_portfolio
+  traefik:
+    image: traefik:v2.5
+    command:
+      - --api.insecure=true
+      - --providers.docker
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.email=adriancenizadev@gmail.com
+      - --certificatesresolvers.letsencrypt.acme.storage=acme.json
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+    networks:
+      - traefik_network_portfolio
+networks:
+  traefik_network_portfolio:
+    external: true
